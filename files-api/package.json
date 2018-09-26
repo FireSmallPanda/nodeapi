@@ -1,0 +1,20 @@
+{
+  "name": "files-api",
+  "version": "1.0.0",
+  "description": "this is files api by panda",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "formidable": "^1.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "title 文件api && node index"
+  },
+  "keywords": [
+    "files"
+  ],
+  "author": "xiaoxiongmao (1020529941@qq.com)",
+  "license": "ISC"
+}
