@@ -6,7 +6,7 @@ var Promise = require('promise');
 let formidable = require('formidable')
 let msgs = configUtil.msgObj;
 var url=require('url');
-// 获取所有图片
+// 获取所有文件夹
 exports.getAllDocuments = (callback) => {
     let components = []
     const files = fs.readdirSync(configs.FILEPATH)

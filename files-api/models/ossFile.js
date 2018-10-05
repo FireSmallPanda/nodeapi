@@ -1,20 +1,36 @@
-let file = require("../models/file")
-let util = require('util');
-let path = require("path");
-let formidable = require('formidable')
-const uuidv1 = require('uuid/v1');
 // 获取配置文件
 let configUtil = require("../config/configUtil");
 let configs = configUtil.configObj;
-let msgs = configUtil.msgObj;
+const fs = require("fs");
 var Promise = require('promise');
-let fs = require('fs');
-// 默认接口 F0001
+let formidable = require('formidable')
+let msgs = configUtil.msgObj;
+var url = require('url');
+let path = require("path");
+const uuidv1 = require('uuid/v1');
+// oss连接池
+let ossClient = configUtil.ossClient
+
+// oss保存文件
+async function put(onlinePath, localPath) {
+    try {
+        let result = await ossClient.put(onlinePath, localPath);
+        return result
+    } catch (e) {
+        console.log(e);
+        return
+    }
+}
+
+
+// 默认接口 F1001
 exports.showIndex = (req, res) => {
     res.writeHead(200, { 'Content-Type': "text/html;charset=UTF-8" });
-    res.end('文件接口');
+    res.end('OSS对象存储文件接口');
 }
-// 单文件上传 F0002
+
+
+// 单文件上传 F1002
 exports.saveOneFile = (req, res) => {
     let that = this;
     // parse a file upload
@@ -52,7 +68,6 @@ exports.saveOneFile = (req, res) => {
                     content.message = `文件不得超过${configs.FILESIZE / 1024000}MB`
                     res.writeHead(200, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify(content));
-
                     return
                 }
                 // 改名
@@ -65,15 +80,19 @@ exports.saveOneFile = (req, res) => {
                 let extname = path.extname(files.file.name);
                 console.log(files.file)
                 // 新路径
-                let newPath = configs.FILEPATH + fields.document + "/" + ran + extname;
+                let localPath = configs.FILEPATH + fields.document + "/" + ran + extname;
                 // 执行改名
-                fs.rename(oldPath, newPath, (err) => {
+                fs.rename(oldPath, localPath, (err) => {
                     if (err) {
                         throw err
                     }
+                    let onlinePath = configs.OSSFILEPATH + '/' + fields.document + "/" + ran + extname
+                    // 上传到oss
+                    let result = put(onlinePath, localPath)
+                    console.log(result)
                     let content = {}
                     content.success = true
-                    content.url = fields.document + "/" + ran + extname;
+                    content.url = onlinePath
                     content.name = files.file.name
                     res.writeHead(200, { 'Content-Type': 'application/json' });
                     res.end(JSON.stringify(content));
@@ -81,30 +100,5 @@ exports.saveOneFile = (req, res) => {
             }
 
         });
-
-
-
     });
-}
-
-// 获取文件夹列表
-exports.getFileList = (req, res) => {
-    let content = {}
-    new Promise(file.getAllDocuments).then((pictures) => {
-        content.entries = pictures
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(content));
-    });
-}
-// 创建文件夹
-exports.createDocument = (req, res)=>{
-    file.createDocument(req, res)
-}
-// 删除文件夹
-exports.deleteDocument = (req, res)=>{
-    file.deleteDocument(req, res)
-}
-// 获取文件
-exports.getFile = (req, res)=>{
-    file.getFile(req, res)
 }

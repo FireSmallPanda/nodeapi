@@ -1,6 +1,16 @@
 ##端口号
 PORT: 3000
+#项目名字前缀
+NAME: /files-api
 #文件传入路径
 FILEPATH: D:/GitDou/
 #文件大小
 FILESIZE: 1024000
+
+#OSS配置
+region: oss-cn-hangzhou
+accessKeyId: LTAI9IK4Il7RjnLH
+accessKeySecret: FC1n9gDWtezMFcjBMa0qEczTDGHu8k
+bucket: qq102
+#线上路径
+OSSFILEPATH: test
