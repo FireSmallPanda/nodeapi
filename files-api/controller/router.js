@@ -100,3 +100,11 @@ exports.getFileList = (req, res) => {
 exports.createDocument = (req, res)=>{
     file.createDocument(req, res)
 }
+// 删除文件夹
+exports.deleteDocument = (req, res)=>{
+    file.deleteDocument(req, res)
+}
+// 获取文件
+exports.getFile = (req, res)=>{
+    file.getFile(req, res)
+}

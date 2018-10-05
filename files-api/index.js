@@ -13,5 +13,10 @@ app.post("/file",router.saveOneFile)
 app.get("/document/list",router.getFileList)
 // 创建文件夹 F0004
 app.post("/document",router.createDocument)
+// 删除文件夹 F0005
+app.delete("/document",router.deleteDocument)
+// 下载单个文件 F0006
+app.get("/file",router.getFile)
+
 console.log("启动端口为："+configs.PORT)
 app.listen(configs.PORT)
