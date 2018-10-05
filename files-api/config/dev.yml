@@ -1,2 +1,6 @@
 ##端口号
-PORT: 8999
+PORT: 3000
+#文件传入路径
+FILEPATH: D:/GitDou/
+#文件大小
+FILESIZE: 1024000
