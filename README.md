@@ -14,4 +14,4 @@ npm run start
 ```
 ## 配置
 > nodeapi\files-api\config\dev.yml 用于设置系统配置
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+
