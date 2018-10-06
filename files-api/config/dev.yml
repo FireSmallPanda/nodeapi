@@ -14,3 +14,4 @@ accessKeySecret: FC1n9gDWtezMFcjBMa0qEczTDGHu8k
 bucket: qq102
 #线上路径
 OSSFILEPATH: test
+READMETEXT: 本微服务由小熊猫提供技术支持1020529941@qq.com

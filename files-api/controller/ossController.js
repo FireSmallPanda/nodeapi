@@ -21,12 +21,7 @@ exports.saveOneFile = (req, res) => {
 
 // 获取文件夹列表
 exports.getFileList = (req, res) => {
-    let content = {}
-    new Promise(file.getAllDocuments).then((pictures) => {
-        content.entries = pictures
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify(content));
-    });
+    file.getAllDocuments(req, res)
 }
 // 创建文件夹
 exports.createDocument = (req, res)=>{
