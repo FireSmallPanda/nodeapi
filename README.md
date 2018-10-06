@@ -11,7 +11,7 @@ npm install
 # 启动项目(本地版)
 npm run start
 # 启动项目(阿里云OSS版)
-npm run start
+npm run oss
 ```
 ## 配置
 > nodeapi\files-api\config\dev.yml 用于设置系统配置
