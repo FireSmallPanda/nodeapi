@@ -75,7 +75,10 @@ async function getStream(path) {
 //  buffer下载
 async function getBuffer(path, callback) {
     try {
+        
         let result = await ossClient.get(path);
+      
+       /// console.log(result);
         callback(result.content)
     } catch (e) {
         console.log(e);
@@ -235,18 +238,28 @@ exports.getFile = (req, res) => {
     // 文件路径
     let onlinePath = configs.OSSFILEPATH + form.path
     let name = form.name
-    console.log(name)
-    getBuffer(onlinePath, (buffer) => {
-        // 创建一个bufferstream
-        var f = new stream.PassThrough();
-        //将Buffer写入
-        f.end(buffer);
-        res.writeHead(200, {
-            'Content-Type': 'application/force-download',
-            'Content-Disposition': `attachment; filename=${name}`
+    listDir(onlinePath, (item) =>{
+        if(typeof(item.objects)=='undefined'){
+                let content = {}
+                content.success = false
+                content.message = `${onlinePath}${msgs.F_0005}`
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify(content));
+                return
+        }
+        getBuffer(onlinePath, (buffer) => {
+            // 创建一个bufferstream
+            var f = new stream.PassThrough();
+            //将Buffer写入
+            f.end(buffer);
+            res.writeHead(200, {
+                'Content-Type': 'application/force-download',
+                'Content-Disposition': `attachment; filename=${name}`
+            });
+            f.pipe(res);
         });
-        f.pipe(res);
     });
+    
 
     // fs.exists(path, (exists) => {
     //     if (!exists) {
