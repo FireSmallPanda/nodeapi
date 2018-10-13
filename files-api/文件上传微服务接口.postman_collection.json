@@ -36,7 +36,7 @@
 						},
 						{
 							"key": "document",
-							"value": "asddsf",
+							"value": "asddsfsdas0001223",
 							"description": "文件夹名称",
 							"type": "text"
 						}
@@ -254,7 +254,7 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "asd",
+							"value": "asddsf",
 							"description": "文件夹名字",
 							"type": "text"
 						}
@@ -410,6 +410,70 @@
 						},
 						{
 							"key": "Date",
+							"value": "Wed, 10 Oct 2018 14:32:17 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "{\"success\":false,\"message\":\"asda文件夹不存在！请确定后执行！\"}"
+				},
+				{
+					"name": "删除文件夹(F0005)",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "asda",
+									"description": "文件夹名字",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{urls}}/document",
+							"host": [
+								"{{urls}}"
+							],
+							"path": [
+								"document"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
 							"value": "Fri, 05 Oct 2018 06:27:32 GMT",
 							"name": "Date",
 							"description": "The date and time that the message was sent"
@@ -454,7 +518,8 @@
 						},
 						{
 							"key": "name",
-							"value": "asd.jpg"
+							"value": "asd.jpg",
+							"description": "下载文件名"
 						}
 					]
 				},
@@ -630,7 +695,8 @@
 						{
 							"key": "file",
 							"description": "文件",
-							"type": "file"
+							"type": "file",
+							"value": ""
 						},
 						{
 							"key": "document",
@@ -756,7 +822,7 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "asd",
+							"value": "asds",
 							"description": "文件夹名字",
 							"type": "text"
 						}
@@ -876,9 +942,9 @@
 				"header": [],
 				"body": {},
 				"url": {
-					"raw": "{{urls}}/file?path=/asd/readme.txt&name=查看我.txt",
+					"raw": "{{urloss}}/file?path=/asd/readme.txt&name=查看我.txt",
 					"host": [
-						"{{urls}}"
+						"{{urloss}}"
 					],
 					"path": [
 						"file"
@@ -899,6 +965,78 @@
 				"description": "下载文件"
 			},
 			"response": [
+				{
+					"name": "下载文件(OSS)(F1006)",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "{{urloss}}/file?path=/asd/readme.txt&name=查看我.txt",
+							"host": [
+								"{{urloss}}"
+							],
+							"path": [
+								"file"
+							],
+							"query": [
+								{
+									"key": "path",
+									"value": "/asd/readme.txt",
+									"description": "目标路径"
+								},
+								{
+									"key": "name",
+									"value": "查看我.txt",
+									"description": "下载文件名"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "raw",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Disposition",
+							"value": "attachment; filename=%E6%9F%A5%E7%9C%8B%E6%88%91.txt",
+							"name": "Content-Disposition",
+							"description": "An opportunity to raise a \"File Download\" dialogue box for a known MIME type"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/force-download",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 06 Oct 2018 09:29:32 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked",
+							"name": "Transfer-Encoding",
+							"description": "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"body": "本微服务由小熊猫提供技术支持1020529941@qq.com"
+				},
 				{
 					"name": "下载文件(OSS)(F1006)",
 					"originalRequest": {
