@@ -18,3 +18,13 @@ npm run oss
 
 ## 接口配置
 > nodeapi\files-api\config\文件上传微服务接口.postman_collection.json 用于导入postman生成接口
+
+### 文件上传接口
+
+    files-api
+    ├── config                   # Compiled files (alternatively `dist`)
+    ├── controller                    # Documentation files (alternatively `doc`)
+    ├── models                     # Source files (alternatively `lib` or `app`)
+    └── README.md
+    
+### Source files
