@@ -71,7 +71,7 @@ exports.saveOneFile = (req, res) => {
                 let extname = path.extname(files.file.name)
                 console.log(files.file)
                 // 新路径
-                let newPath = `${configs.FILEPATH}${fields.document}${ran}${extname}`
+                let newPath = `${configs.FILEPATH}${fields.document}/${ran}${extname}`
                 // 执行改名
                 fs.rename(oldPath, newPath, (err) => {
                     if (err) {
